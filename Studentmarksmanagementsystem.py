@@ -6,7 +6,7 @@
 	# note 4 : row should be deleted by id number only , but you can access the row by index number in python , so this statement gives you index number 
 	# according to rollno entered by the user. 
 import pandas as pd
-df = pd.read_csv("d:/myfile.csv") 
+df = pd.read_csv("C:/myfile.csv") 
 print(df)
 ch=None
 while ch!=0:
@@ -23,7 +23,7 @@ while ch!=0:
         ld=df.index[-1] # Read Note 11
         rollno=int(input("enter roll no = "))
         name=input("enter student name = ")
-        clas=int(input("enter clas  = "))
+        standard=int(input("enter standard  = "))
         section=input("enter section = ")
         physics=int(input("enter marks got in physics = "))
         chemistry=int(input("enter marks got in chemistry = "))
@@ -32,21 +32,21 @@ while ch!=0:
         computer=int(input("enter marks got in computer = "))
         total=physics+chemistry+maths+english+computer
         percent=total/5
-        df.loc[ld+1]=[rollno,name,clas,section,physics,chemistry,maths,english,computer,total,percent] # Read Note 2 
-        df.to_csv("d:/myfile.csv") # Read note 3
+        df.loc[ld+1]=[rollno,name,standard,section,physics,chemistry,maths,english,computer,total,percent] # Read Note 2 
+        df.to_csv("C:/myfile.csv") # Read note 3
         print(df)
     elif ch==2:
         rollno=int(input("enter rollno to delete = "))
         ix=df.loc[df['rollno']==rollno].index.values   # Read note 4
         df.drop(index=ix,inplace=True)
-        df.to_csv("d:/myfile.csv")
+        df.to_csv("C:/myfile.csv")
         print(df)
     elif ch==3:
         ch1=None  # Creating sub menu
         while ch1!=0:
             print("press 0 to return to main menu...")
             print("press 1 to update student name...")
-            print("press 2 to update clas ....")
+            print("press 2 to update standard ....")
             ch1=int(input("enter your choice = "))
             if ch1==0:
                 pass
@@ -56,15 +56,15 @@ while ch!=0:
                 print(df.iloc[ix1])
                 namenew=input("enter new name = ")
                 df.at[ix1,'name']=namenew
-                df.to_csv("d:/myfile.csv")
+                df.to_csv("C:/myfile.csv")
                 print(df)
             elif ch1==2:
-                rollno1=int(input("enter rollno whose clas to be updated = "))
+                rollno1=int(input("enter rollno whose standard to be updated = "))
                 ix2=df.loc[df['rollno']==rollno1].index.values
-                clasnew=float(input("enter new clas = "))
+                standardnew=float(input("enter new standard = "))
                 print(df.iloc[ix2])
-                df.at[ix2,'clas']=clasnew
-                df.to_csv("d:/myfile.csv")
+                df.at[ix2,'standard']=standardnew
+                df.to_csv("C:/myfile.csv")
                 print(df)
     elif ch==4:
         rollno=int(input("enter rollno to search = "))
